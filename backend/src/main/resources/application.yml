@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:cakeshop;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+server:
+  port: 8080
+  error:
+    include-message: always
+
+security:
+  jwt:
+    secret: change-this-secret-in-production
+    expiration: 86400000
+
+stripe:
+  apiKey: ${STRIPE_API_KEY:test_stripe_key}
+
+app:
+  frontend-origin: http://localhost:3000
+
+logging:
+  level:
+    org.springframework.security: INFO
+
